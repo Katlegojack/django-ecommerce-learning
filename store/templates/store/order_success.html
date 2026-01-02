@@ -1,0 +1,8 @@
+{% extends 'store/base.html' %}
+
+{% block content%}
+    <h2> SUCCESSFUL ORDER🎉</h2>
+        <p>Thank you for your order</p>
+        <p> Total Paid: R{{total}} </p>
+        <a href="{% url 'products' %}">Continue Shopping</a>
+{%endblock%}

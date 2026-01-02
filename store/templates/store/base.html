@@ -1,0 +1,46 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title> E-Commerce</title>
+    </head>
+
+    <body>
+        <header>
+        <h1>Kativation E-Commerce</h1>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/products">Products</a>
+            <a href="{% url 'cart' %}"> Carts🛒({{cart_count }})</a>
+            <a href="/checkout">Checkout</a>
+            {% if user.is_authenticated and not user.is_anonymous %}
+                <span>{{ user.username }}</span>
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}">LogIn</a>
+                <a href="{% url 'signup'%}">SignUp</a>
+            {% endif %}
+            
+        </nav>
+            
+        </header>
+            {% if messages%}
+                {% for message in messages%}
+                <div class="message" {{message.tags}}>
+                    {{message}}
+                </div>
+                {% endfor %}
+                {% endif %}
+        <hr>
+        <main>
+            {% block content %}
+
+            {% endblock%}
+
+        </main>
+
+        <footer>
+            <p>&copy; Kativation Online store 2025</p>
+    </body>
+
+</html>

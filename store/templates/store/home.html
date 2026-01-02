@@ -1,0 +1,42 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+
+<h1>Welcome to TechStore</h1>
+
+<p>
+    TechStore is your trusted online destination for high-quality technology products.
+    We bring you the latest laptops, smartphones, accessories, and gadgets — all in one place.
+</p>
+
+<hr>
+
+<h2>What We Offer</h2>
+<ul>
+    <li>Laptops for work, study, and gaming</li>
+    <li>Smartphones and mobile accessories</li>
+    <li>Computer components and peripherals</li>
+    <li>Reliable tech products at competitive prices</li>
+</ul>
+
+<hr>
+
+<h2>Why Choose TechStore?</h2>
+<ul>
+    <li>Carefully selected tech products</li>
+    <li>Simple and secure shopping experience</li>
+    <li>Fast and reliable order handling</li>
+    <li>Built for students, professionals, and everyday users</li>
+</ul>
+
+<hr>
+
+<h2>Start Shopping</h2>
+<p>
+    Browse our products and add items to your cart.
+    When you're ready, proceed to checkout and complete your purchase.
+</p>
+
+<a href="{% url 'products' %}">View Products</a>
+
+{% endblock %}
