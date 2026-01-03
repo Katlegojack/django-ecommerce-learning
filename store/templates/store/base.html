@@ -1,18 +1,17 @@
-<!DOCTYPE>
+{% load static %}
+
+<!DOCTYPE html>
 <html>
-    <head>
-        <title> E-Commerce</title>
-    </head>
+<head>
+    <title>Kativation E-Commerce</title>
+    <link rel="stylesheet" href="{% static 'store/styles.css' %}">
+</head>
 
-    <body>
-        <header>
+<body>
+    <!-- Header -->
+    <header>
         <h1>Kativation E-Commerce</h1>
-
-        <nav>
-            <a href="/">Home</a>
-            <a href="/products">Products</a>
-            <a href="{% url 'cart' %}"> Carts🛒({{cart_count }})</a>
-            <a href="/checkout">Checkout</a>
+        <div class="user-box">
             {% if user.is_authenticated and not user.is_anonymous %}
                 <span>{{ user.username }}</span>
                 <a href="{% url 'logout' %}">Logout</a>
@@ -20,27 +19,42 @@
                 <a href="{% url 'login' %}">LogIn</a>
                 <a href="{% url 'signup'%}">SignUp</a>
             {% endif %}
-            
-        </nav>
-            
-        </header>
-            {% if messages%}
-                {% for message in messages%}
-                <div class="message" {{message.tags}}>
-                    {{message}}
-                </div>
-                {% endfor %}
+        </div>
+    </header>
+
+    <!-- Container: Sidebar + Main -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="/">Home</a>
+                <a href="/products">Products</a>
+                <a href="{% url 'cart' %}">Cart 🛒 ({{ cart_count }})</a>
+                <a href="/checkout">Checkout</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'my_orders' %}">My Orders</a>
                 {% endif %}
-        <hr>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
         <main>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message {{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
             {% block content %}
-
-            {% endblock%}
-
+            {% endblock %}
         </main>
+    </div>
 
-        <footer>
-            <p>&copy; Kativation Online store 2025</p>
-    </body>
-
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Kativation Online store 2025</p>
+    </footer>
+</body>
 </html>

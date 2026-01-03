@@ -1,44 +1,29 @@
 {% extends 'store/base.html' %}
 
 {% block content %}
-<h2>My Orders</h2>
+<h2>Your Orders</h2>
 
 {% if orders %}
+<div class="card-container">
     {% for order in orders %}
-        <div style="border:1px solid #ccc; padding:15px; margin-bottom:20px;">
-            
-            <p><strong>Order ID:</strong> #{{ order.id }}</p>
-            <p><strong>Date:</strong> {{ order.created_at|date:"d M Y, H:i" }}</p>
-            <p><strong>Status:</strong> {{ order.status }}</p>
-            <p><strong>Total:</strong> R{{ order.total_price }}</p>
+    <div class="card order-card">
+        <h3>Order #{{ order.id }}</h3>
+        <p><strong>Date:</strong> {{ order.created_at|date:"d M Y H:i" }}</p>
+        <p><strong>Total Paid:</strong> R{{ order.total_price }}</p>
 
-            <h4>Items</h4>
+        <hr>
 
-            <table border="1" cellpadding="8" cellspacing="0" width="100%">
-                <thead>
-                    <tr style="background:#f2f2f2;">
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in order.items.all %}
-                        <tr>
-                            <td>{{ item.product_name }}</td>
-                            <td>{{ item.quantity }}</td>
-                            <td>R{{ item.price }}</td>
-                            <td>R{{ item.sub_total }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-
-        </div>
+        <h4>Items:</h4>
+        <ul>
+            {% for item in order.items.all %}
+            <li>{{ item.product_name }} - Qty: {{ item.quantity }} - R{{ item.price }}</li>
+            {% endfor %}
+        </ul>
+    </div>
     {% endfor %}
+</div>
 {% else %}
-    <p>You have not placed any orders yet.</p>
+<p style="text-align:center; font-size:18px; margin-top:20px;">You have not made any orders yet 😔</p>
 {% endif %}
 
 {% endblock %}

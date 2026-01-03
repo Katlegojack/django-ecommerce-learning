@@ -1,0 +1,266 @@
+/* =============================
+   General Reset & Fonts
+============================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f6f9f4; /* soft white */
+    color: #2e7d32; /* soft dark green */
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #2e7d32;
+}
+
+h1, h2, h3, h4 {
+    color: #1b5e20; /* darker green for headings */
+}
+
+/* =============================
+   Header
+============================= */
+header {
+    background-color: #4CAF50; /* lighter green */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #3E8E41;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+/* =============================
+   User Box (top-right)
+============================= */
+.user-box {
+    display: flex;
+    gap: 10px;
+}
+
+.user-box span, .user-box a {
+    background-color: white;
+    color: #4CAF50;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.user-box a:hover {
+    background-color: #3E8E41;
+    color: white;
+}
+
+/* =============================
+   Container: Sidebar + Main
+============================= */
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* =============================
+   Sidebar
+============================= */
+.sidebar {
+    width: 200px;
+    background-color: #f6f9f4;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #A5D6A7; /* soft green border */
+    height: fit-content;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-nav a {
+    background-color: white;
+    color: #4CAF50;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.sidebar-nav a:hover {
+    background-color: #4CAF50;
+    color: white;
+    transform: translateX(3px);
+}
+
+/* =============================
+   Main Content
+============================= */
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* =============================
+   Messages
+============================= */
+.message {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    background-color: #d4edda; /* soft green */
+    color: #155724;
+}
+
+/* =============================
+   Cards for Products & Cart
+============================= */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    border: 2px solid #A5D6A7;
+    border-radius: 12px;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+}
+
+.card img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid #A5D6A7;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin-bottom: 10px;
+}
+
+/* =============================
+   Buttons
+============================= */
+button, input[type="submit"] {
+    background-color: #0535e2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #3E8E41;
+}
+
+/* =============================
+   Footer
+============================= */
+footer {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    margin-top: 40px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* =============================
+   Responsive
+============================= */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .user-box {
+        justify-content: center;
+    }
+}
+/* =============================
+   Orders Cards
+============================= */
+.order-card {
+    background-color: #ffffff;
+    border: 2px solid #A5D6A7; /* soft green border */
+    border-radius: 12px;
+    padding: 15px;
+    width: 300px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+}
+
+.order-card h3 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.order-card h4 {
+    color: #1b5e20;
+    margin-bottom: 8px;
+}
+
+.order-card ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.order-card ul li {
+    margin-bottom: 5px;
+}

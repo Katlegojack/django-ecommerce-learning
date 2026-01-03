@@ -7,7 +7,8 @@
     <p>{{product.description}}<p>
     <p><strong>Price: R{{ product.price }}</strong></p>
     
-    <a href="{% url 'add_to_cart' product.id%}"><button>Add to Cart</button></a>
+    <a href="{% url 'add_to_cart' product.id%}"><button>Add to Cart</button></a><hr><hr>
 </div>
-<a href="{% url 'products' %}">Back to Products</a>
+
+<a href="{% url 'products' %}"><button>Back to Products</button></a>
 {% endblock %}

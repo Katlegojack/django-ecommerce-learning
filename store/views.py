@@ -8,6 +8,7 @@ from .forms import CustomUserCreationForm
 from django.core.mail import send_mail
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 # Home page
@@ -228,3 +229,21 @@ def get_user_cart(user):
     cart, created = Cart.objects.get_or_create(user=user)
     return cart
 
+@login_required(login_url='login')
+def my_orders(request):
+    # Get all orders for the logged-in user
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'store/my_orders.html', {'orders': orders})
+
+@staff_member_required(login_url='login')
+def admin_orders(request):
+    """
+    Admin dashboard: show all orders
+    """
+    orders = Order.objects.all().order_by('-created_at')  # newest first
+    total_revenue = sum(order.total_price for order in orders)  # sum of all orders
+
+    return render(request, 'store/admin_orders.html', {
+        'orders': orders,
+        'total_revenue': total_revenue
+    })

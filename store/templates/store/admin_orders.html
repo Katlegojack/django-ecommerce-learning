@@ -1,0 +1,36 @@
+<h1>All Orders (Admin Dashboard)</h1>
+
+<p><strong>Total Revenue:</strong> R{{ total_revenue|floatformat:2 }}</p>
+
+{% if orders %}
+  <table border="1" cellpadding="5">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>User</th>
+        <th>Placed On</th>
+        <th>Total Price</th>
+        <th>Items</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}
+      <tr>
+        <td>{{ order.id }}</td>
+        <td>{{ order.user.username }}</td>
+        <td>{{ order.created_at|date:"d M Y H:i" }}</td>
+        <td>R{{ order.total_price|floatformat:2 }}</td>
+        <td>
+          <ul>
+            {% for item in order.items.all %}
+              <li>{{ item.product_name }} - Qty: {{ item.quantity }} - Price: R{{ item.price|floatformat:2 }}</li>
+            {% endfor %}
+          </ul>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No orders have been made yet.</p>
+{% endif %}

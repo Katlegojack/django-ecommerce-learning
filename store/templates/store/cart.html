@@ -4,38 +4,32 @@
 <h2>Your Cart</h2>
 
 {% if cart_items %}
-<table border="1" cellpadding="10">
-    <tr>
-        <th>Product</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Subtotal</th>
-        <th>Action</th>
-    </tr>
-
+<div class="card-container">
     {% for item in cart_items %}
-    <tr>
-        <td>{{ item.product.name }}</td>
-        <td>R{{ item.product.price }}</td>
-        <td>
+    <div class="card cart-card">
+        <img src="{{ item.product.image }}" alt="{{ item.product.name }}">
+        <h3>{{ item.product.name }}</h3>
+        <p>Price: R{{ item.product.price }}</p>
+        <p>
+            Quantity:
             <a href="{% url 'decrease' item.product.id %}">➖</a>
             {{ item.quantity }}
             <a href="{% url 'increase' item.product.id %}">➕</a>
-        </td>
-        <td>R{{ item.subtotal }}</td>
-        <td>
-            <a href="{% url 'remove_from_cart' item.product.id %}">Remove</a>
-        </td>
-    </tr>
+        </p>
+        <p>Subtotal: R{{ item.subtotal }}</p>
+        <a href="{% url 'remove_from_cart' item.product.id %}"><button>Remove</button></a>
+    </div>
     {% endfor %}
-</table>
+</div>
 
-<p><strong>Total: R{{ total }}</strong></p>
+<p style="text-align:right; font-size:18px; margin-top:20px;">
+    <strong>Total: R{{ total }}</strong>
+</p>
 
-<a href="{% url 'checkout' %}">Proceed to Checkout</a>
+<a href="{% url 'checkout' %}"><button style="float:right;">Proceed to Checkout</button></a>
 
 {% else %}
-<p>Your cart is empty.</p>
+<p style="text-align:center; font-size:18px; margin-top:20px;">Your cart is empty 😔</p>
 {% endif %}
 
 {% endblock %}
