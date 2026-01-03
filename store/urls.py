@@ -15,5 +15,5 @@ urlpatterns =[
     path('increase/<int:id>/', views.increase_qyt, name='increase'),
     path('decrease/<int:id>/', views.decrease_qyt, name='decrease'),
     path('remove/<int:id>/', views.remove_from_cart, name='remove_from_cart'),
-
+    
 ]

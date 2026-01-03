@@ -119,3 +119,17 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Email backend to use SMTP (real emails)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Gmail SMTP server
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+
+# Your Gmail credentials
+EMAIL_HOST_USER = 'mmakokat@gmail.com'        # Your Gmail address
+EMAIL_HOST_PASSWORD = 'irtgfpyooxbvuuxj'      # Your 16-character App Password
+# Default sender
+DEFAULT_FROM_EMAIL = 'Kativation-Ecommerce <yourgmail@gmail.com>'
